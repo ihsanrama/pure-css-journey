@@ -36,7 +36,7 @@ const ChatMessage: React.FC<MessageProps> = ({
   return (
     <div 
       ref={messageRef}
-      className="flex w-full mb-6 transition-all duration-300 ease-out"
+      className={`flex w-full mb-6 transition-all duration-300 ease-out ${sender === 'user' ? 'justify-end' : 'justify-start'}`}
       style={{ 
         opacity: animated ? 0 : 1,
         transform: animated ? 'translateY(10px)' : 'translateY(0)'
