@@ -64,7 +64,7 @@
   }
 
   .user-bubble {
-    @apply chat-bubble bg-chat-user-bubble text-gray-800 ml-auto animate-fade-up;
+    @apply chat-bubble bg-black text-white ml-auto animate-fade-up;
   }
 
   .ai-bubble {

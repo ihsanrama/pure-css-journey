@@ -56,7 +56,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isProcessing = fal
           value={message}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          placeholder="Message DeepSeek"
+          placeholder="Message Jarfish"
           className="flex-1 max-h-32 p-4 bg-transparent border-0 resize-none focus:ring-0 text-sm text-gray-800 placeholder-gray-500"
           style={{ height: '52px' }}
           disabled={isProcessing}
