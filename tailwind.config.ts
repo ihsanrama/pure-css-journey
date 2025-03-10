@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,11 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				chat: {
+					'user-bubble': '#f1f5f9',
+					'ai-bubble': '#ffffff',
+					'icon-bg': '#eef2ff'
 				}
 			},
 			borderRadius: {
@@ -84,11 +90,37 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				'fade-up': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'pulse-slow': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.5' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.3s ease-out',
+				'fade-up': 'fade-up 0.4s ease-out',
+				'pulse-slow': 'pulse-slow 2s infinite'
+			},
+			transitionProperty: {
+				'height': 'height',
+				'spacing': 'margin, padding',
+			},
+			fontFamily: {
+				'sans': ['-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'sans-serif'],
+			},
+			boxShadow: {
+				'soft': '0 2px 10px rgba(0, 0, 0, 0.05)',
+				'bubble': '0 1px 2px rgba(0, 0, 0, 0.05)',
 			}
 		}
 	},
