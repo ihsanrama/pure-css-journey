@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Image } from 'lucide-react';
+import { Send, File } from 'lucide-react';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -49,7 +49,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isProcessing = fal
   }, []);
   
   return (
-    <div className="chat-input-container w-full max-w-4xl mx-auto rounded-lg bg-white shadow-soft border border-gray-200 transition-all">
+    <div className="chat-input-container w-full max-w-4xl mx-auto rounded-full bg-white shadow-soft border border-gray-200 transition-all">
       <div className="flex items-end">
         <textarea
           ref={textareaRef}
@@ -57,13 +57,13 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isProcessing = fal
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           placeholder="Message Jarfish"
-          className="flex-1 max-h-32 p-4 bg-transparent border-0 resize-none focus:ring-0 text-sm text-gray-800 placeholder-gray-500"
+          className="flex-1 max-h-32 px-6 py-4 bg-transparent border-0 resize-none focus:ring-0 text-sm text-gray-800 placeholder-gray-500"
           style={{ height: '52px' }}
           disabled={isProcessing}
         />
-        <div className="flex items-center px-3 py-2 space-x-2">
-          <button className="p-1 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 transition-colors">
-            <Image size={18} />
+        <div className="flex items-center pr-4 py-2 space-x-2">
+          <button className="p-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 transition-colors">
+            <File size={18} />
           </button>
           <button
             onClick={handleSendMessage}
@@ -77,9 +77,6 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isProcessing = fal
             <Send size={18} />
           </button>
         </div>
-      </div>
-      <div className="px-4 pb-3 text-xs text-gray-500">
-        AI-generated, for reference only
       </div>
     </div>
   );
