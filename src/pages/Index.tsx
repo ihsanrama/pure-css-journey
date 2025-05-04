@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import ChatMessage, { MessageProps } from '../components/ChatMessage';
 import ChatInput from '../components/ChatInput';
@@ -168,11 +167,10 @@ const Index = () => {
           <div className="flex items-center">
             <button 
               onClick={toggleSidebar} 
-              className="mr-4 p-2 rounded-md hover:bg-gray-100 transition-colors"
+              className="p-2 rounded-md hover:bg-gray-100 transition-colors"
             >
               <MessageSquare size={18} />
             </button>
-            <h1 className="text-xl font-semibold text-gray-800">Jarfish</h1>
           </div>
           
           <Button onClick={handleNewChat} variant="outline" className="flex items-center gap-2">

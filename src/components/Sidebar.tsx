@@ -20,7 +20,7 @@ const Sidebar: React.FC<SidebarProps> = ({ chatHistory, onNewChat, onSelectChat 
     <div className="w-64 h-screen bg-sidebar flex flex-col border-r border-gray-200">
       <div className="p-4 border-b border-gray-200">
         <div className="flex items-center">
-          <h1 className="text-xl font-semibold text-gray-800">deepseek</h1>
+          <h1 className="text-xl font-semibold text-gray-800">jarfish</h1>
         </div>
       </div>
       
