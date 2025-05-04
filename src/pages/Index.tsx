@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import ChatMessage, { MessageProps } from '../components/ChatMessage';
 import ChatInput from '../components/ChatInput';
@@ -163,26 +164,6 @@ const Index = () => {
       )}
       
       <div className="flex flex-col flex-1 overflow-hidden">
-        <header className="h-14 border-b border-gray-200 flex items-center justify-between px-4">
-          <div className="flex items-center">
-            <button 
-              onClick={toggleSidebar} 
-              className="p-2 rounded-md hover:bg-gray-100 transition-colors"
-            >
-              <MessageSquare size={18} />
-            </button>
-          </div>
-          
-          <Button onClick={handleNewChat} variant="outline" className="flex items-center gap-2">
-            <Plus size={16} />
-            <span>New chat</span>
-          </Button>
-          
-          <Button variant="ghost" className="w-10 h-10 p-0 rounded-full">
-            <User size={18} />
-          </Button>
-        </header>
-        
         <div className="flex-1 overflow-y-auto p-6 scrollbar-hide chat-window-container">
           <div className="max-w-4xl mx-auto">
             {messages.length > 0 ? (
