@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Sparkles, Mic, Image } from 'lucide-react';
+import { Send, Image } from 'lucide-react';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -63,13 +63,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isProcessing = fal
         />
         <div className="flex items-center px-3 py-2 space-x-2">
           <button className="p-1 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 transition-colors">
-            <Sparkles size={18} />
-          </button>
-          <button className="p-1 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 transition-colors">
             <Image size={18} />
-          </button>
-          <button className="p-1 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 transition-colors">
-            <Mic size={18} />
           </button>
           <button
             onClick={handleSendMessage}
