@@ -14,14 +14,16 @@ interface SidebarProps {
   chatHistory: ChatHistoryItem[];
   onNewChat: () => void;
   onSelectChat: (id: string) => void;
+  onLogout: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ chatHistory, onNewChat, onSelectChat }) => {
+const Sidebar: React.FC<SidebarProps> = ({ chatHistory, onNewChat, onSelectChat, onLogout }) => {
   const navigate = useNavigate();
   
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("selectedIndustry");
+    onLogout();
     navigate("/auth");
   };
 
