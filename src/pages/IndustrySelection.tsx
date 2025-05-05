@@ -1,23 +1,24 @@
-
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
-import { File, Upload } from 'lucide-react';
+import { File, Upload, Factory, Building2, LayoutDashboard } from 'lucide-react';
 
 interface IndustrySelectionProps {
   onIndustrySelect: (industry: string) => void;
 }
 
 const industries = [
-  { id: 'manufacturing', label: 'Manufacturing' },
-  { id: 'hospital', label: 'Hospital' },
-  { id: 'office', label: 'General Office' },
-  { id: 'other', label: 'Other (Upload Own Documents)' }
+  { id: 'manufacturing', label: 'Manufacturing', icon: Factory },
+  { id: 'hospital', label: 'Hospital', icon: Building2 },
+  { id: 'office', label: 'General Office', icon: LayoutDashboard },
+  { id: 'other', label: 'Other (Upload Own Documents)', icon: File }
 ];
 
 const IndustrySelection: React.FC<IndustrySelectionProps> = ({ onIndustrySelect }) => {
+  const navigate = useNavigate();
   const [selectedIndustry, setSelectedIndustry] = useState<string | null>(null);
   const [isOtherSelected, setIsOtherSelected] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
@@ -116,6 +117,9 @@ const IndustrySelection: React.FC<IndustrySelectionProps> = ({ onIndustrySelect 
         description: "Your industry has been set up successfully",
       });
       setIsSubmitting(false);
+      
+      // Navigate to the chat page
+      navigate('/');
     }, 1500);
   };
 
@@ -140,15 +144,19 @@ const IndustrySelection: React.FC<IndustrySelectionProps> = ({ onIndustrySelect 
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-6">
-            <RadioGroup value={selectedIndustry || ""} onValueChange={handleIndustryChange}>
-              {industries.map((industry) => (
-                <div key={industry.id} className="flex items-center space-x-2">
-                  <RadioGroupItem value={industry.id} id={industry.id} />
-                  <label htmlFor={industry.id} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                    {industry.label}
-                  </label>
-                </div>
-              ))}
+            <RadioGroup value={selectedIndustry || ""} onValueChange={handleIndustryChange} className="space-y-4">
+              {industries.map((industry) => {
+                const Icon = industry.icon;
+                return (
+                  <div key={industry.id} className="flex items-center space-x-4 border rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                    <RadioGroupItem value={industry.id} id={industry.id} />
+                    <Icon size={20} className="text-blue-500" />
+                    <label htmlFor={industry.id} className="text-base font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex-grow cursor-pointer">
+                      {industry.label}
+                    </label>
+                  </div>
+                );
+              })}
             </RadioGroup>
             
             {isOtherSelected && (
