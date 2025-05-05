@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { Google } from "lucide-react";
+import { Mail } from "lucide-react";
 
 interface AuthProps {
   onLogin: (email: string) => void;
@@ -170,7 +169,7 @@ const Auth: React.FC<AuthProps> = ({ onLogin }) => {
                     onClick={handleGoogleLogin}
                     disabled={isLoading}
                   >
-                    <Google size={16} className="mr-2" />
+                    <Mail size={16} className="mr-2" />
                     Continue with Google
                   </Button>
                 </CardFooter>
@@ -241,7 +240,7 @@ const Auth: React.FC<AuthProps> = ({ onLogin }) => {
                     onClick={handleGoogleLogin}
                     disabled={isLoading}
                   >
-                    <Google size={16} className="mr-2" />
+                    <Mail size={16} className="mr-2" />
                     Continue with Google
                   </Button>
                 </CardFooter>
