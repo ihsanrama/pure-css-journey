@@ -51,20 +51,20 @@ const ChatMessage: React.FC<MessageProps> = ({
       )}
       
       <div className={`flex flex-col ${sender === 'user' ? 'items-end' : 'items-start'} max-w-4xl`}>
-        <div className={sender === 'user' ? 'user-bubble' : 'ai-bubble'}>
+        <div className={`p-4 rounded-2xl ${sender === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-800'}`}>
           {content}
         </div>
         
         {sender === 'ai' && (
-          <div className="flex items-center mt-2 space-x-2 text-gray-500">
+          <div className="flex items-center mt-2 space-x-3 text-gray-500">
             <button className="p-1 rounded-full hover:bg-gray-100 transition-all">
-              <Copy size={14} />
+              <Copy size={16} />
             </button>
             <button className="p-1 rounded-full hover:bg-gray-100 transition-all">
-              <ThumbsUp size={14} />
+              <ThumbsUp size={16} />
             </button>
             <button className="p-1 rounded-full hover:bg-gray-100 transition-all">
-              <ThumbsDown size={14} />
+              <ThumbsDown size={16} />
             </button>
           </div>
         )}

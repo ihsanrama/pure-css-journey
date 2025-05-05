@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, File } from 'lucide-react';
+import { Send } from 'lucide-react';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -61,10 +61,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isProcessing = fal
           style={{ height: '52px' }}
           disabled={isProcessing}
         />
-        <div className="flex items-center pr-4 py-2 space-x-2">
-          <button className="p-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 transition-colors">
-            <File size={18} />
-          </button>
+        <div className="flex items-center pr-4 py-2">
           <button
             onClick={handleSendMessage}
             disabled={!message.trim() || isProcessing}

@@ -4,6 +4,7 @@ import ChatInput from "@/components/ChatInput";
 import ChatMessage, { MessageProps } from "@/components/ChatMessage";
 import ChatEmptyState from "@/components/ChatEmptyState";
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Mock data for chat history
 const mockChatHistory = [
@@ -18,6 +19,7 @@ interface IndexProps {
 }
 
 const Index: React.FC<IndexProps> = ({ onLogout }) => {
+  const navigate = useNavigate();
   const [chatHistory, setChatHistory] = useState(mockChatHistory);
   const [isProcessing, setIsProcessing] = useState(false);
   const [messages, setMessages] = useState<MessageProps[]>([]);
@@ -34,6 +36,13 @@ const Index: React.FC<IndexProps> = ({ onLogout }) => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("selectedIndustry");
+    onLogout();
+    navigate("/auth");
+  };
 
   const handleNewChat = () => {
     const newChat = {
@@ -85,7 +94,7 @@ const Index: React.FC<IndexProps> = ({ onLogout }) => {
     setTimeout(() => {
       const aiMessage = {
         id: (Date.now() + 1).toString(),
-        content: "Hello! I'm Jarfish, an artificial intelligence assistant. I'm at your service and would be delighted to assist you with any inquiries or tasks you may have.",
+        content: "I'm sorry, as this is just a frontend demo, I can't actually process your request. In a real application, this would connect to the Jarfish API for meaningful responses.",
         sender: 'ai' as const,
         timestamp: new Date().toISOString()
       };
@@ -103,7 +112,7 @@ const Index: React.FC<IndexProps> = ({ onLogout }) => {
           )
         );
       }
-    }, 2000);
+    }, 1000);
   };
 
   const isEmptyChat = messages.length === 0 && !isProcessing;
@@ -114,7 +123,7 @@ const Index: React.FC<IndexProps> = ({ onLogout }) => {
         chatHistory={chatHistory} 
         onNewChat={handleNewChat} 
         onSelectChat={handleSelectChat} 
-        onLogout={onLogout}
+        onLogout={handleLogout}
       />
       
       <div className="flex-1 flex flex-col">
