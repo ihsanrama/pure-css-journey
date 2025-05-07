@@ -80,7 +80,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isProcessing = fal
             disabled={!message.trim() || isProcessing}
             className={`p-2 rounded-full ${
               message.trim() && !isProcessing
-                ? 'bg-blue-500 text-white hover:bg-blue-600'
+                ? 'bg-[#111AFE] text-white hover:bg-[#111AFE]/90'
                 : 'bg-gray-200 text-gray-500 cursor-not-allowed'
             } transition-colors`}
           >
