@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send } from 'lucide-react';
+import { Send, Upload } from 'lucide-react';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -42,6 +42,12 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isProcessing = fal
     }
   };
 
+  const handleFileUpload = () => {
+    // This is just a placeholder for the file upload functionality
+    console.log('File upload clicked');
+    // In a real implementation, this would open a file picker
+  };
+
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.focus();
@@ -61,7 +67,14 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isProcessing = fal
           style={{ height: '52px' }}
           disabled={isProcessing}
         />
-        <div className="flex items-center pr-4 py-2">
+        <div className="flex items-center pr-4 py-2 gap-2">
+          <button
+            onClick={handleFileUpload}
+            className="p-2 rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 transition-colors"
+            aria-label="Upload file"
+          >
+            <Upload size={18} />
+          </button>
           <button
             onClick={handleSendMessage}
             disabled={!message.trim() || isProcessing}
