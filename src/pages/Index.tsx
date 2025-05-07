@@ -143,6 +143,15 @@ const Index: React.FC<IndexProps> = ({ onLogout }) => {
                       timestamp={message.timestamp}
                     />
                   ))}
+                  {isProcessing && (
+                    <ChatMessage
+                      id="processing"
+                      content=""
+                      sender="ai"
+                      timestamp={new Date().toISOString()}
+                      animated={false}
+                    />
+                  )}
                   <div ref={messagesEndRef} />
                 </div>
               )}
@@ -150,14 +159,12 @@ const Index: React.FC<IndexProps> = ({ onLogout }) => {
           </div>
         </main>
         
-        {!isEmptyChat && (
-          <div className="p-4 md:p-6">
-            <ChatInput 
-              onSendMessage={handleSendMessage}
-              isProcessing={isProcessing}
-            />
-          </div>
-        )}
+        <div className="p-4 md:p-6">
+          <ChatInput 
+            onSendMessage={handleSendMessage}
+            isProcessing={isProcessing}
+          />
+        </div>
       </div>
     </div>
   );
